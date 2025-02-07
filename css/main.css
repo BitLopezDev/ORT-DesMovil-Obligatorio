@@ -1,0 +1,13 @@
+.icon-kindofbig {
+    font-size: 24px; /* Cambia el tamaño del icono */
+    vertical-align: middle; /* Ajusta la alineación vertical */
+    margin-left: 8px; /* Añade un margen a la izquierda */
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 50%;
+  }

@@ -17,6 +17,7 @@
         <ion-router id="routing">
             <ion-route url="/" component="page-home"></ion-route>
             <ion-route url="/login" component="page-login"></ion-route>
+            <ion-route url="/logout" component="page-logout"></ion-route>
             <ion-route url="/register" component="page-register"></ion-route>
             <ion-route url="/products" component="page-products"></ion-route>
 
@@ -34,15 +35,25 @@
 
             <ion-content>
                 <ion-list id="menu-options">
-                    <ion-item href="/" onclick="closemenu()">HOME</ion-item>
-                    <ion-item href="/products" onclick="closemenu()" class="iftoken">See products</ion-item>
+                    <ion-item href="/" onclick="closemenu()">HOME &nbsp;
 
-                    <ion-item href="/login" onclick="closemenu()" class="ifNotoken">LOGIN</ion-item>
-                    <ion-item href="/register" onclick="closemenu()" class="ifNotoken">register</ion-item>
+                        <ion-icon name="home-outline" class="icon-kindofbig"></ion-icon>
+                    </ion-item>
+                    <ion-item href="/products" onclick="closemenu()" class="iftoken"> Ver los productos &nbsp;
+                        <ion-icon name="pricetag-outline" class="icon-kindofbig"></ion-icon>
+                    </ion-item>
+
+                    <ion-item href="/login" onclick="closemenu()" class="ifNotoken">LOGIN &nbsp;<ion-icon
+                            name="log-in-outline" class="icon-kindofbig"></ion-icon></ion-item>
+                    <ion-item href="/register" onclick="closemenu()" class="ifNotoken">Registrarse &nbsp; <ion-icon
+                            name="person-add-outline" class="icon-kindofbig"></ion-icon></ion-item>
+                    <ion-item href="/logout" onclick="closemenu()" class="iftoken">Logout &nbsp; <ion-icon
+                            name="log-out-outline"></ion-icon></ion-item>
                 </ion-list>
             </ion-content>
         </ion-menu>
         <div id="main"></div>
+
 
         <!-- Fin MENU -->
 
@@ -53,28 +64,57 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>HOME</ion-title>
+                    <ion-title><ion-icon name="home-outline"></ion-icon class="icon-kindofbig"> &nbsp; Home</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content>
 
 
-                <ion-card color="primary" class="ifNotoken">
-                    <ion-card-header>
-                        <ion-card-title>Login</ion-card-title>
-                        <ion-card-subtitle>Inicie sesión</ion-card-subtitle>
-                    </ion-card-header>
 
-                    <ion-card-content> Card Content </ion-card-content>
-                </ion-card>
-                <ion-card color="primary" class="ifNotoken">
-                    <ion-card-header>
-                        <ion-card-title>Registrese</ion-card-title>
-                        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                    </ion-card-header>
+                <!--LOGIN AND REGISTER CARDS-->
 
-                    <ion-card-content> Card Content </ion-card-content>
-                </ion-card>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col class="ifNotoken">
+                            <ion-card color="light">
+                                <ion-card-header>
+                                    <ion-card-title>Login &nbsp; <ion-icon name="log-in-outline"></ion-icon
+                                            class="icon-kindofbig">
+                                    </ion-card-title>
+
+                                </ion-card-header>
+
+                                <ion-card-content> Inicie sesión </ion-card-content>
+                            </ion-card>
+                        </ion-col>
+                        <ion-col class="ifNotoken">
+                            <ion-card color="light">
+                                <ion-card-header>
+                                    <ion-card-title>Registrarse &nbsp; <ion-icon name="person-add-outline"></ion-icon
+                                            class="icon-kindofbig"></ion-card-title>
+
+                                </ion-card-header>
+
+                                <ion-card-content> Regístrese </ion-card-content>
+                            </ion-card>
+                        </ion-col>
+
+                    </ion-row>
+                    <ion-row>
+                        <ion-col class="center">
+                            <ion-card color="light">
+                                <ion-card-header>
+                                    <ion-card-title>Logout &nbsp;<ion-icon name="log-out-outline"></ion-icon
+                                            class="icon-kindofbig"></ion-card-title>
+
+                                </ion-card-header>
+
+                                <ion-card-content> Cierre sesión </ion-card-content>
+                            </ion-card>
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
 
 
 
@@ -100,13 +140,32 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>products</ion-title>
+                    <ion-title>Products</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content> Products' screen </ion-content>
         </page-products>
 
+        <page-logout class="ion-page" id="screen-logout">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                    <ion-title>logout</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <ion-card color="light">
+                    <ion-card-header>
+                        <ion-card-title>Logout</ion-card-title>
+                        <ion-card-subtitle>Cierre de sesión</ion-card-subtitle>
+                    </ion-card-header>
 
+                    <ion-card-content> Se ha cerrado sesión </ion-card-content>
+                </ion-card>
+            </ion-content>
+        </page-logout>
 
         <page-register class="ion-page" id="screen-register">
             <ion-header>
@@ -148,16 +207,12 @@
             </ion-content>
         </page-register>
 
-
-
-
-
-
-
-
-
     </ion-app>
-    <script src="js/main.js" lazy></script>
+    <script src="js/showhide.js"></script>
+    <!-- <script src="js/error.js"></script>
+    <script src="js/asynchronous.js"></script> -->
+    <script src="js/routing.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
