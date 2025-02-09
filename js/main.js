@@ -1,12 +1,18 @@
-function listeners() {}
+
+/**
+ * @returns {void}
+ */
 window.onload = function Start() {
   events();
   iftoken();
   refresherall();
-  listeners();
+
   //loginThySelf();
 };
 
+/**
+ * @returns {void}
+ */
 function loginSubmit() {
   let user = document.querySelector("#user-login").value;
   let password = document.querySelector("#password-login").value;

@@ -1,4 +1,3 @@
-const ROUTING = true;
 const MENU = document.querySelector("#menu");
 const ROUTER = document.querySelector("#routing");
 const HOME = document.querySelector("#screen-home");
@@ -10,7 +9,9 @@ const LIST = document.querySelector("#screen-list");
 const FILTER = document.querySelector("#screen-filter");
 const TIME = document.querySelector("#screen-time");
 const MAP = document.querySelector("#screen-map");
-
+/**
+ * * All sections
+ */
 const ALLSECTIONS = new Array(
   ROUTER,
   HOME,
@@ -23,6 +24,10 @@ const ALLSECTIONS = new Array(
   TIME,
   MAP
 );
+/**
+ * * Events: Event listener for ROUTER
+ * @returns {void}
+ */
 function events() {
   ROUTER.addEventListener("ionRouteDidChange", navigate);
   // document
@@ -31,6 +36,12 @@ function events() {
   // navigate(null, "/");
 }
 
+/**
+ * Navigating to routes
+ * @param {Event} evt 
+ * @param {string} altroute 
+ * @returns {void}
+ */
 function navigate(evt, altroute = null) {
   hidescreens();
   iftoken();
@@ -67,12 +78,20 @@ function navigate(evt, altroute = null) {
   }
 }
 
+/**
+ * * Hides all sections
+ * @returns {void}
+ */
 function hidescreens() {
   ALLSECTIONS.forEach((element) => {
     element.style.display = "none";
   });
 }
 
+/**
+ * * Closes menu
+ * @returns {void}
+ */
 function closemenu() {
   MENU.close();
 }

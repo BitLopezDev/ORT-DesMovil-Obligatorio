@@ -1,6 +1,13 @@
 const URL_BASE = "https://movetrack.develotion.com/";
 const IMG_BASE = "https://movetrack.develotion.com/imgs/";
 
+/**
+ *
+ * @param {string} user
+ * @param {string} password
+ * @param {int} idCountry
+ * @returns {string}
+ */
 async function registerThySelf(user, password = "327146", idCountry = 235) {
   let headersList = {
     "Content-Type": "application/json",
@@ -28,6 +35,12 @@ async function registerThySelf(user, password = "327146", idCountry = 235) {
   }
 }
 
+/**
+ *
+ * @param {string} user
+ * @param {string} password
+ * @returns {boolean}
+ */
 async function loginThySelf(user = "327146test1", password = "327146") {
   let headersList = {
     "Content-Type": "application/json",
@@ -59,6 +72,6 @@ async function loginThySelf(user = "327146test1", password = "327146") {
     document.querySelector(
       "#loginresult"
     ).innerHTML = `Error logging in: ${data.codigo} - ${data.mensaje}`;
-    return false;
   }
+  return false;
 }

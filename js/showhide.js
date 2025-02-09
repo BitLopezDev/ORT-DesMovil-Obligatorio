@@ -1,5 +1,10 @@
-const SHOWHIDE = true;
 //TODO: Document functions
+/**
+ * * showhide.js
+ * * Hides DOM Elements as per request
+ * @param {string} selector
+ * @returns {void}
+ */
 function hidethemall(selector) {
   try {
     let elements = document?.querySelectorAll(selector);
@@ -11,7 +16,11 @@ function hidethemall(selector) {
     throw new Error("Error en la función hidethemall");
   }
 }
-
+/**
+ * * show DOM Elements as per request
+ * @param {string} selector
+ * @param {string} display
+ */
 function showthemall(selector, display = "block") {
   try {
     let elements = document?.querySelectorAll(selector);
@@ -23,6 +32,10 @@ function showthemall(selector, display = "block") {
     throw new Error("Error en la función showthemall");
   }
 }
+/**
+ * * Shows or hides DOM elements based on there being a token
+ * @returns {void}
+ */
 function iftoken() {
   let thereistoken = localStorage.getItem("token");
 
@@ -43,6 +56,7 @@ function iftoken() {
 
 /**
  * * refreshers
+ * @returns {void}
  */
 
 function refresherall() {
