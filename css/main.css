@@ -11,3 +11,6 @@
     align-items: center;
     width: 50%;
   }
+  .flexdis {
+    display: flex ;
+  }
