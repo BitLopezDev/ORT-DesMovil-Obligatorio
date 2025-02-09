@@ -1,4 +1,5 @@
 const SHOWHIDE = true;
+//TODO: Document functions
 function hidethemall(selector) {
   try {
     let elements = document?.querySelectorAll(selector);
