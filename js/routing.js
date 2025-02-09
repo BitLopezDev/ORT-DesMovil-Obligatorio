@@ -6,40 +6,64 @@ const LOGIN = document.querySelector("#screen-login");
 const REGISTER = document.querySelector("#screen-register");
 const PRODUCTS = document.querySelector("#screen-products");
 const LOGOUT = document.querySelector("#screen-logout");
-const ALLSECTIONS = new Array(ROUTER, HOME, LOGIN, REGISTER, PRODUCTS, LOGOUT);
-function events() {
-    ROUTER.addEventListener("ionRouteDidChange", navigate);
-    document
-      .querySelector("#btnregister")
-      .addEventListener("click", registerdata);
-    HOME.style.display = "block";
-  }
+const ADD_EXERCISE = document.querySelector("#screen-add-exercise");
+const LIST = document.querySelector("#screen-list");
+// const FILTER = document.querySelector("#screen-filter");
 
-function navigate(evt) {
-    hidescreens();
-  
-    let ruta = evt.detail.to;
-  
-    if (ruta == "/") {
-      HOME.style.display = "block";
-    } else if (ruta == "/login") {
-      LOGIN.style.display = "block";
-    } else if (ruta == "/register") {
-      REGISTER.style.display = "block";
-    } else if (ruta == "/products") {
-      PRODUCTS.style.display = "block";
-    } else if (ruta == "/logout") {
-      LOGOUT.style.display = "block";
-    }
+const ALLSECTIONS = new Array(
+  ROUTER,
+  HOME,
+  LOGIN,
+  REGISTER,
+  PRODUCTS,
+  LOGOUT,
+  ADD_EXERCISE,
+  LIST
+);
+function events() {
+  ROUTER.addEventListener("ionRouteDidChange", navigate);
+  document
+    .querySelector("#btnregister")
+    .addEventListener("click", registerdata);
+  navigate(null, "/");
+}
+
+function navigate(evt, altroute = null) {
+  hidescreens();
+  iftoken();
+  let route = evt ? evt.detail.to : altroute;
+
+  if (route == "/") {
+    HOME.style.display = "block";
+  } else if (route == "/login") {
+    LOGIN.style.display = "block";
+    localStorage.setItem("token", "Lady");
+    iftoken();
+  } else if (route == "/register") {
+    localStorage.setItem("token", "Lady");
+    iftoken();
+    REGISTER.style.display = "block";
+  } else if (route == "/products") {
+    PRODUCTS.style.display = "block";
+  } else if (route == "/logout") {
+    iftoken();
+    LOGOUT.style.display = "block";
+    localStorage.removeItem("token");
+  } else if (route == "/add-exercise") {
+    ADD_EXERCISE.style.display = "block";
+  } else if (route == "/list") {
+    LIST.style.display = "block";
+  } else if (route == "/filter") {
+    FILTER.style.display = "block";
   }
+}
 
 function hidescreens() {
-    ALLSECTIONS.forEach((element) => {
-      element.style.display = "none";
-    });
-   
-  }
-  
-  function closemenu() {
-    MENU.close();
-  }
+  ALLSECTIONS.forEach((element) => {
+    element.style.display = "none";
+  });
+}
+
+function closemenu() {
+  MENU.close();
+}
