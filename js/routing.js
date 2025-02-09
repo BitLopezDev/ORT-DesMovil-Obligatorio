@@ -25,10 +25,10 @@ const ALLSECTIONS = new Array(
 );
 function events() {
   ROUTER.addEventListener("ionRouteDidChange", navigate);
-  document
-    .querySelector("#btnregister")
-    .addEventListener("click", registerdata);
-  navigate(null, "/");
+  // document
+  //   .querySelector("#btnregister")
+  //   .addEventListener("click", registerdata);
+  // navigate(null, "/");
 }
 
 function navigate(evt, altroute = null) {
@@ -41,11 +41,12 @@ function navigate(evt, altroute = null) {
   } else if (route == "/login") {
     //* Login
     LOGIN.style.display = "block";
-    localStorage.setItem("token", "Lady");
+    loginThySelf();
+    // localStorage.setItem("token", "Lady");
     iftoken();
   } else if (route == "/register") {
     //* register
-    localStorage.setItem("token", "Lady");
+    // localStorage.setItem("token", "Lady");
     iftoken();
     REGISTER.style.display = "block";
   } else if (route == "/logout") {

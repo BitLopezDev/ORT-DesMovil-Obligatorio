@@ -144,7 +144,31 @@
                 <ion-refresher class="refresher" slot="fixed">
                     <ion-refresher-content></ion-refresher-content>
                 </ion-refresher>
-                login screen </ion-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-input id="user-login" label="username" label-placement="floating"
+                            placeholder="Enter username"></ion-input>
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-input type="password" label="Password" id="password-login">
+                            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+
+                        </ion-input>
+
+                    </ion-item>
+                    <ion-item>
+
+
+                        <ion-button type="submit" onclick="loginSubmit();">Login</ion-button>
+
+
+                    </ion-item>
+                    <ion-item>
+                        <ion-label id="label-respuesta-login"><strong id="loginresult"></strong></ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
         </page-login>
 
 
@@ -416,8 +440,8 @@
 
 
     <script src="js/showhide.js"></script>
-    <!-- <script src="js/error.js"></script>
-    <script src="js/asynchronous.js"></script> -->
+    <!-- <script src="js/error.js"></script>-->
+    <script src="js/asynchronous.js"></script>
     <script src="js/routing.js"></script>
     <script src="js/main.js" defer></script>
 </body>
