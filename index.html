@@ -37,32 +37,68 @@
         <ion-menu side="start" menu-id="first" content-id="main" id="menu">
             <ion-header>
                 <ion-toolbar color="light">
-                    <iont-title><ion-chip>
-                            <ion-avatar>
-                                <img alt="Silhouette of a person's head"
-                                    src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                            </ion-avatar>
-                            <!-- TODO: User dinamyc -->
-                            <ion-label>User</ion-label>
-                        </ion-chip></iont-title>
+                    <iont-title><ion-row>
+                            <ion-col class="center">
+                                <ion-title>Welcome</ion-title>
+                            </ion-col>
+
+                        </ion-row></iont-title>
                 </ion-toolbar>
             </ion-header>
 
             <ion-content fullscreen="true" class="ion-padding">
-                <ion-list id="menu-options">
-                    <ion-item href="/" onclick="closemenu()">HOME &nbsp;
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+                <ion-row>
+                    <ion-col class="center">
+                        <ion-avatar>
+                            <img alt="Silhouette of a person's head"
+                                src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                        </ion-avatar>
+                    </ion-col>
 
-                        <ion-icon name="home"></ion-icon>
-                    </ion-item>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+
+                        <ion-list width="100%">
+                            <ion-item-sliding>
+                                <ion-item-options side="start">
 
 
-                    <ion-item href="/login" onclick="closemenu()" class="ifNotoken">LOGIN &nbsp;<ion-icon
-                            name="log-in"></ion-icon></ion-item>
-                    <ion-item href="/register" onclick="closemenu()" class="ifNotoken">Registrarse &nbsp; <ion-icon
-                            name="person-add"></ion-icon></ion-item>
-                    <ion-item href="/logout" onclick="closemenu()" class="iftoken">Logout &nbsp; <ion-icon
-                            name="log-out"></ion-icon></ion-item>
-                </ion-list>
+                                    <ion-item-option color="danger" class="iftoken"
+                                        onclick="navigate(null, '/logout')">Log
+                                        out</ion-item-option>
+                                </ion-item-options>
+                                <ion-item>
+
+
+                                    <!--TODO: center-->
+
+                                    <ion-label class="ifNotoken">Identify Yourself</ion-label>
+                                    <ion-label class="iftoken center">
+                                        <!--TODO: Load name dynamically-->
+                                        <strong>Name</strong>
+                                    </ion-label>
+
+
+
+
+
+                                </ion-item>
+                            </ion-item-sliding>
+
+
+
+
+
+
+                        </ion-list>
+                    </ion-col>
+
+                </ion-row>
+
             </ion-content>
         </ion-menu>
         <div id="main"></div>
@@ -83,7 +119,11 @@
                     <ion-title><ion-icon name="log-in"></ion-icon> &nbsp; LOGIN</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content> login screen </ion-content>
+            <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+                login screen </ion-content>
         </page-login>
 
 
@@ -98,6 +138,9 @@
                 </ion-toolbar>
             </ion-header>
             <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
                 <ion-card color="light">
                     <ion-card-header>
                         <ion-card-title>Logout</ion-card-title>
@@ -119,6 +162,9 @@
                 </ion-toolbar>
             </ion-header>
             <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
 
                 <ion-list>
                     <ion-item>
@@ -162,7 +208,11 @@
                     <ion-title> <ion-icon name="barbel"> </ion-icon>&nbsp; Add Exercise</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content> Add Exercise screen </ion-content>
+            <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+                Add Exercise screen </ion-content>
         </page-add-exercise>
 
         <page-list class="ion-page" id="screen-list">
@@ -174,7 +224,11 @@
                     <ion-title><ion-icon name="list"></ion-icon> &nbsp; List</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content>List screen </ion-content>
+            <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+                List screen </ion-content>
         </page-list>
 
         <page-filter class="ion-page" id="screen-filter">
@@ -186,7 +240,11 @@
                     <ion-title><ion-icon name="color-filter"> </ion-icon>&nbsp; Filter</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content>Filter screen </ion-content>
+            <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+                Filter screen </ion-content>
         </page-filter>
 
         <page-time class="ion-page" id="screen-time">
@@ -198,7 +256,27 @@
                     <ion-title> <ion-icon name="stopwatch"></ion-icon> &nbsp; TIME</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content> Time screen </ion-content>
+            <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+
+                <ion-segment>
+                    <ion-segment-button value="first" content-id="first">
+                        <ion-label>Total time</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="second" content-id="second">
+                        <ion-label>Daily Time
+                        </ion-label>
+                    </ion-segment-button>
+
+                </ion-segment>
+                <ion-segment-view>
+                    <ion-segment-content id="first">Total time</ion-segment-content>
+                    <ion-segment-content id="second">Dayli time</ion-segment-content>
+
+                </ion-segment-view>
+            </ion-content>
         </page-time>
 
         <page-map class="ion-page" id="screen-map">
@@ -210,7 +288,13 @@
                     <ion-title> <ion-icon name="map"></ion-icon> &nbsp; MAP</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content> Map screen </ion-content>
+            <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+
+
+                Map screen </ion-content>
         </page-map>
 
         <!--! /!\ /!\ DO NOT ADD PAGES BELLOW /!\ /!\ !-->
@@ -223,7 +307,12 @@
                     <ion-title><ion-icon name="home"></ion-icon> &nbsp; Home</ion-title>
                 </ion-toolbar>
             </ion-header>
+
             <ion-content>
+                <ion-refresher class="refresher" slot="fixed">
+                    <ion-refresher-content></ion-refresher-content>
+                </ion-refresher>
+
 
 
 
@@ -308,7 +397,7 @@
     <!-- <script src="js/error.js"></script>
     <script src="js/asynchronous.js"></script> -->
     <script src="js/routing.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

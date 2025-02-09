@@ -1,14 +1,10 @@
-
 const URL_BASE = "https://ort-tallermoviles.herokuapp.com/api/";
 
 window.onload = function Start() {
   events();
   iftoken();
+  refresherall();
 };
-
-
-
-
 
 function registerdata() {
   let name = document.querySelector("#txtregisterNombre").value;
@@ -73,7 +69,3 @@ function registerdata() {
 
   // })
 }
-
-
-
-
