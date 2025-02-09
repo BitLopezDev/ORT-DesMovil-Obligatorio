@@ -4,21 +4,24 @@ const ROUTER = document.querySelector("#routing");
 const HOME = document.querySelector("#screen-home");
 const LOGIN = document.querySelector("#screen-login");
 const REGISTER = document.querySelector("#screen-register");
-const PRODUCTS = document.querySelector("#screen-products");
 const LOGOUT = document.querySelector("#screen-logout");
 const ADD_EXERCISE = document.querySelector("#screen-add-exercise");
 const LIST = document.querySelector("#screen-list");
-// const FILTER = document.querySelector("#screen-filter");
+const FILTER = document.querySelector("#screen-filter");
+const TIME = document.querySelector("#screen-time");
+const MAP = document.querySelector("#screen-map");
 
 const ALLSECTIONS = new Array(
   ROUTER,
   HOME,
   LOGIN,
   REGISTER,
-  PRODUCTS,
   LOGOUT,
   ADD_EXERCISE,
-  LIST
+  LIST,
+  FILTER,
+  TIME,
+  MAP
 );
 function events() {
   ROUTER.addEventListener("ionRouteDidChange", navigate);
@@ -55,6 +58,10 @@ function navigate(evt, altroute = null) {
     LIST.style.display = "block";
   } else if (route == "/filter") {
     FILTER.style.display = "block";
+  } else if (route == "/time") {
+    TIME.style.display = "block";
+  } else if (route == "/map") {
+    MAP.style.display = "block";
   }
 }
 

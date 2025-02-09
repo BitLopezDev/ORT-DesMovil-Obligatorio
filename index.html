@@ -19,10 +19,13 @@
             <ion-route url="/login" component="page-login"></ion-route>
             <ion-route url="/logout" component="page-logout"></ion-route>
             <ion-route url="/register" component="page-register"></ion-route>
-            <ion-route url="/products" component="page-products"></ion-route>
+
             <ion-route url="/add-exercise" component="page-add-exercise"></ion-route>
             <ion-route url="/list" component="page-list"></ion-route>
             <ion-route url="/filter" component="page-filter"></ion-route>
+            <ion-route url="/time" component="page-time"></ion-route>
+            <ion-route url="/map" component="page-map"></ion-route>
+
 
 
 
@@ -49,16 +52,14 @@
                 <ion-list id="menu-options">
                     <ion-item href="/" onclick="closemenu()">HOME &nbsp;
 
-                        <ion-icon name="home" class="icon-kindofbig"></ion-icon>
-                    </ion-item>
-                    <ion-item href="/products" onclick="closemenu()" class="iftoken"> Ver los productos &nbsp;
-                        <ion-icon name="pricetag" class="icon-kindofbig"></ion-icon>
+                        <ion-icon name="home"></ion-icon>
                     </ion-item>
 
-                    <ion-item href="/login" onclick="closemenu()" class="ifNotoken">LOGIN &nbsp;<ion-icon name="log-in"
-                            class="icon-kindofbig"></ion-icon></ion-item>
+
+                    <ion-item href="/login" onclick="closemenu()" class="ifNotoken">LOGIN &nbsp;<ion-icon
+                            name="log-in"></ion-icon></ion-item>
                     <ion-item href="/register" onclick="closemenu()" class="ifNotoken">Registrarse &nbsp; <ion-icon
-                            name="person-add" class="icon-kindofbig"></ion-icon></ion-item>
+                            name="person-add"></ion-icon></ion-item>
                     <ion-item href="/logout" onclick="closemenu()" class="iftoken">Logout &nbsp; <ion-icon
                             name="log-out"></ion-icon></ion-item>
                 </ion-list>
@@ -79,23 +80,13 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>LOGIN</ion-title>
+                    <ion-title><ion-icon name="log-in"></ion-icon> &nbsp; LOGIN</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content> login screen </ion-content>
         </page-login>
 
-        <page-products class="ion-page" id="screen-products">
-            <ion-header>
-                <ion-toolbar>
-                    <ion-buttons slot="start">
-                        <ion-menu-button></ion-menu-button>
-                    </ion-buttons>
-                    <ion-title>Products</ion-title>
-                </ion-toolbar>
-            </ion-header>
-            <ion-content> Products' screen </ion-content>
-        </page-products>
+
 
         <page-logout class="ion-page" id="screen-logout">
             <ion-header>
@@ -103,7 +94,7 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>logout</ion-title>
+                    <ion-title> <ion-icon name="log-out"> </ion-icon>&nbsp; logout</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content>
@@ -124,7 +115,7 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>register</ion-title>
+                    <ion-icon name="person-add"> </ion-icon>&nbsp; Register</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content>
@@ -168,7 +159,7 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>Add Exercise</ion-title>
+                    <ion-title> <ion-icon name="barbel"> </ion-icon>&nbsp; Add Exercise</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content> Add Exercise screen </ion-content>
@@ -180,23 +171,47 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>List</ion-title>
+                    <ion-title><ion-icon name="list"></ion-icon> &nbsp; List</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content>List screen </ion-content>
         </page-list>
 
-        <!-- <page-filter class="ion-page" id="screen-filter">
+        <page-filter class="ion-page" id="screen-filter">
             <ion-header>
                 <ion-toolbar>
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title>List</ion-title>
+                    <ion-title><ion-icon name="color-filter"> </ion-icon>&nbsp; Filter</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content>List screen </ion-content>
-        </page-filte> -->
+            <ion-content>Filter screen </ion-content>
+        </page-filter>
+
+        <page-time class="ion-page" id="screen-time">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                    <ion-title> <ion-icon name="stopwatch"></ion-icon> &nbsp; TIME</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content> Time screen </ion-content>
+        </page-time>
+
+        <page-map class="ion-page" id="screen-map">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                    <ion-title> <ion-icon name="map"></ion-icon> &nbsp; MAP</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content> Map screen </ion-content>
+        </page-map>
 
         <!--! /!\ /!\ DO NOT ADD PAGES BELLOW /!\ /!\ !-->
         <page-home class="ion-page" id="screen-home">
@@ -205,7 +220,7 @@
                     <ion-buttons slot="start">
                         <ion-menu-button></ion-menu-button>
                     </ion-buttons>
-                    <ion-title><ion-icon name="home"></ion-icon class="icon-kindofbig"> &nbsp; Home</ion-title>
+                    <ion-title><ion-icon name="home"></ion-icon> &nbsp; Home</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content>
@@ -217,10 +232,9 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col class="ifNotoken">
-                            <ion-card color="light">
+                            <ion-card color="light" onclick="navigate(null, '/login')">
                                 <ion-card-header>
-                                    <ion-card-title>Login &nbsp; <ion-icon name="log-in"></ion-icon
-                                            class="icon-kindofbig">
+                                    <ion-card-title>Login &nbsp; <ion-icon name="log-in"></ion-icon>
                                     </ion-card-title>
 
                                 </ion-card-header>
@@ -229,10 +243,10 @@
                             </ion-card>
                         </ion-col>
                         <ion-col class="ifNotoken">
-                            <ion-card color="light">
+                            <ion-card color="light" onclick="navigate(null, '/register')">
                                 <ion-card-header>
-                                    <ion-card-title>Registrarse &nbsp; <ion-icon name="person-add"></ion-icon
-                                            class="icon-kindofbig"></ion-card-title>
+                                    <ion-card-title>Registrarse &nbsp; <ion-icon
+                                            name="person-add"></ion-icon></ion-card-title>
 
                                 </ion-card-header>
 
@@ -243,10 +257,9 @@
                     </ion-row>
                     <ion-row>
                         <ion-col class="center">
-                            <ion-card color="light">
+                            <ion-card color="light" onclick="navigate(null, '/logout')">
                                 <ion-card-header>
-                                    <ion-card-title>Logout &nbsp;<ion-icon name="log-out"></ion-icon
-                                            class="icon-kindofbig"></ion-card-title>
+                                    <ion-card-title>Logout &nbsp;<ion-icon name="log-out"></ion-icon></ion-card-title>
 
                                 </ion-card-header>
 
@@ -268,21 +281,21 @@
                     <ion-segment-button onclick="navigate(null, '/')" value="home">
                         <ion-icon name="home"></ion-icon>
                     </ion-segment-button>
-                    <!-- <ion-segment-button onclick="navigate(null, '/login')" value="login">
-                        <ion-icon name="log-in" class="ifNotoken"></ion-icon>
-                    </ion-segment-button>
-                    <ion-segment-button onclick="navigate(null, '/logout')" value="logout" class="iftoken">
-                        <ion-icon name="log-out"></ion-icon>
-                    </ion-segment-button>
 
-                    <ion-segment-button onclick="navigate(null, '/register')" value="register" class="ifNotoken">
-                        <ion-icon name="person-add"></ion-icon>
-                    </ion-segment-button> -->
                     <ion-segment-button onclick="navigate(null, '/add-exercise')" value="add-exercise" class="iftoken">
                         <ion-icon name="barbell"></ion-icon>
                     </ion-segment-button>
                     <ion-segment-button onclick="navigate(null, '/list')" value="list" class="iftoken">
                         <ion-icon name="list"></ion-icon>
+                    </ion-segment-button>
+                    <ion-segment-button onclick="navigate(null, '/filter')" value="filter" class="iftoken">
+                        <ion-icon name="color-filter"></ion-icon>
+                    </ion-segment-button>
+                    <ion-segment-button onclick="navigate(null, '/time')" value="time" class="iftoken">
+                        <ion-icon name="stopwatch"></ion-icon>
+                    </ion-segment-button>
+                    <ion-segment-button onclick="navigate(null, '/map')" value="map" class="iftoken">
+                        <ion-icon name="map"></ion-icon>
                     </ion-segment-button>
                 </ion-segment>
             </ion-toolbar>
