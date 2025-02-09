@@ -39,16 +39,17 @@ function navigate(evt, altroute = null) {
   if (route == "/") {
     HOME.style.display = "block";
   } else if (route == "/login") {
+    //* Login
     LOGIN.style.display = "block";
     localStorage.setItem("token", "Lady");
     iftoken();
   } else if (route == "/register") {
+    //* register
     localStorage.setItem("token", "Lady");
     iftoken();
     REGISTER.style.display = "block";
-  } else if (route == "/products") {
-    PRODUCTS.style.display = "block";
   } else if (route == "/logout") {
+    //* logout
     iftoken();
     LOGOUT.style.display = "block";
     localStorage.removeItem("token");
