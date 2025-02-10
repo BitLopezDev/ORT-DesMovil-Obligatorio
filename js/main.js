@@ -25,7 +25,7 @@ function registerSubmit() {
   let user = document.querySelector("#user-register").value;
   let password = document.querySelector("#password-register").value;
   let country = document.querySelector("#country-register").value;
-  alert(`${user} ${password} ${country}`);
+
   registerThySelf(user, password, country);
 }
 
