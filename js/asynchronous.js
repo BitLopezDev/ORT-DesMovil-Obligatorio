@@ -8,7 +8,7 @@
 async function registerThySelf(user, password, idCountry) {
   if (!stringSecurity([user, password, String(idCountry)])) {
     document.querySelector(
-      "#loginresult"
+      "#registerresult"
     ).innerHTML = `Error logging in: SQL Injection detected`;
     return `Error logging in: SQL Injection detected`;
   }

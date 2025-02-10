@@ -27,6 +27,11 @@ const ALLSECTIONS = new Array(
   MAP
 );
 const SQLI = Array(
+  "*",
+  "use",
+  "using",
+  "root",
+  "admin",
   "insert",
   "delete",
   "select",
@@ -40,8 +45,11 @@ const SQLI = Array(
   "or",
   "and",
   "where",
+  "flush",
+  "user",
   "from",
   "join",
+  "inner",
   "table",
   "database",
   "column",
