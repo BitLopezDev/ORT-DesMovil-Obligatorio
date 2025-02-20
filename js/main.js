@@ -7,6 +7,7 @@ window.onload = function Start() {
   refresherall();
   loadCountries();
   updateDOMinfo();
+  
 
   //loginThySelf();
 };

@@ -12,6 +12,12 @@ async function registerThySelf(user, password, idCountry) {
     ).innerHTML = `Error logging in: SQL Injection detected`;
     return `Error logging in: SQL Injection detected`;
   }
+  if (user.length < 4 || password.length < 4 || idCountry.length < 2) {
+    document.querySelector(
+      "#registerresult"
+    ).innerHTML = `Error logging in: User and password must be at least 4 characters long and a country must be selected`;
+    return;
+  }
   document.querySelector("#registerresult").innerHTML = `Registering...`;
   localStorage.setItem("countrycode", idCountry);
   let headersList = {
@@ -61,6 +67,12 @@ async function loginThySelf(user = "327146test1", password = "327146") {
     return false;
   }
   document.querySelector("#loginresult").innerHTML = `Registering...`;
+  if (user.length < 4 || password.length < 4) {
+    document.querySelector(
+      "#loginresult"
+    ).innerHTML = `Error logging in: User and password must be at least 4 characters long`;
+    return;
+  }
   let headersList = {
     "Content-Type": "application/json",
   };
@@ -77,15 +89,17 @@ async function loginThySelf(user = "327146test1", password = "327146") {
   });
 
   let data = await response.json();
-  console.log(data);
 
   // console.log(data);
 
   if (data.codigo == 200 || data.codigo == "200") {
     localStorage.removeItem("name");
     localStorage.removeItem("token");
+    localStorage.removeItem("iduser");
+
     localStorage.setItem("name", user);
     localStorage.setItem("token", data.apiKey);
+    localStorage.setItem("iduser", data.id);
 
     document.querySelector("#loginresult").innerHTML = `Login succesfull`;
     return true;
@@ -117,4 +131,43 @@ async function loadCountries() {
     aux += `<ion-select-option value="${country.callingCodes}">${country.name} ${country.alpha3Code} ${country.callingCodes}</ion-select-option>>`;
   }
   document.querySelector("#country-register").innerHTML += aux;
+}
+
+/**
+ *
+ * @returns {void}
+ */
+async function loadActivities() {
+  if (!iftoken()) {
+    navigate(null, "/login");
+    return;
+  }
+  let thereistoken = localStorage.getItem("token");
+  let thereisid = localStorage.getItem("iduser");
+  let headersList = {
+    apikey: thereistoken,
+    iduser: thereisid,
+  };
+
+  let response = await fetch(
+    "https://movetrack.develotion.com/actividades.php",
+    {
+      method: "GET",
+      headers: headersList,
+    }
+  );
+
+  let data = await response.json();
+
+  for (let act of data.actividades) {
+    document.getElementById(
+      "activity"
+    ).innerHTML += `<ion-select-option value="${act.id}">${act.nombre}</ion-select-option>`;
+  }
+
+  // data.actividades.forEach((act) => {
+  //   document.getElementById(
+  //     "actividades"
+  //   ).innerHTML += `<ion-select-option value="${act.id}">${act.nombre}</ion-select-option>`;
+  // });
 }

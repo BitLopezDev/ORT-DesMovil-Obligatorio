@@ -11,6 +11,8 @@ const LIST = document.querySelector("#screen-list");
 const FILTER = document.querySelector("#screen-filter");
 const TIME = document.querySelector("#screen-time");
 const MAP = document.querySelector("#screen-map");
+// * NAV Follows
+const NAV = document.querySelector("ion-nav");
 /**
  * * All sections
  */

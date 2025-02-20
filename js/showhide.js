@@ -1,5 +1,3 @@
-
-
 //TODO: Document functions
 /**
  * * showhide.js
@@ -34,25 +32,30 @@ function showthemall(selector, display = "block") {
     throw new Error("Error en la función showthemall");
   }
 }
+function isloggedint() {}
 /**
  * * Shows or hides DOM elements based on there being a token
- * @returns {void}
+ * @returns {boolean}
  */
 function iftoken() {
   let thereistoken = localStorage.getItem("token");
+  let thereisid = localStorage.getItem("iduser");
 
   hidethemall(".iftoken");
   hidethemall(".ifNotoken");
   hidethemall(".iftokenflex");
 
-  if (thereistoken != null && thereistoken != undefined) {
+  if (thereistoken != null && thereistoken != undefined && thereisid != null && thereisid != undefined ) {
+    //
     showthemall(".iftoken");
     showthemall(".iftokenflex", "flex");
     hidethemall(".ifNotoken");
+    return true;
   } else {
     showthemall(".ifNotoken");
     hidethemall(".iftoken");
     hidethemall(".iftokenflex");
+    return false;
   }
 }
 
@@ -77,7 +80,6 @@ function refresherall() {
 }
 
 function updateDOMinfo() {
-  
   document.querySelector("#nameMenu").innerHTML =
     localStorage.getItem("name") || "Error finding name";
   /*let countrycode = localStorage.getItem("countrycode");

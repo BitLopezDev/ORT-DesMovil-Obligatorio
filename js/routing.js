@@ -41,6 +41,7 @@ function navigate(evt, altroute = null) {
     LOGOUT.style.display = "block";
     localStorage.removeItem("token");
   } else if (route == "/add-exercise") {
+    loadActivities();
     ADD_EXERCISE.style.display = "block";
   } else if (route == "/list") {
     LIST.style.display = "block";
