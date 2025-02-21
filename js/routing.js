@@ -44,6 +44,7 @@ function navigate(evt, altroute = null) {
     loadActivities();
     ADD_EXERCISE.style.display = "block";
   } else if (route == "/list") {
+    loadList();
     LIST.style.display = "block";
   } else if (route == "/filter") {
     FILTER.style.display = "block";

@@ -7,7 +7,6 @@ window.onload = function Start() {
   refresherall();
   loadCountries();
   updateDOMinfo();
-  
 
   //loginThySelf();
 };
@@ -44,3 +43,13 @@ function stringSecurity(strArray) {
   }
   return true;
 }
+
+function sendactivity() {
+  console.log("sending activity");
+  let activity = document.querySelector("#activity").value;
+  let datetimeactivity = document.querySelector("#datetime").value;
+  let minutes = document.querySelector("#minutes").value;
+  console.log(activity + datetimeactivity + minutes);
+}
+
+

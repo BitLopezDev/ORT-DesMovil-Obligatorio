@@ -267,11 +267,28 @@
                     <ion-refresher-content></ion-refresher-content>
                 </ion-refresher>
 
-                <ion-select id="activity" scroll="true" placeholder="Choose an activity" label="Choose an activity" label-placement="floating">
-                    <!-- <ion-select-option value="apple">Apple</ion-select-option>
+
+
+                <ion-item>
+                    <ion-select id="activity" scroll="true" placeholder="Choose an activity" label="Choose an activity"
+                        label-placement="floating">
+                        <!-- <ion-select-option value="apple">Apple</ion-select-option>
                     <ion-select-option value="banana">Banana</ion-select-option>
                     <ion-select-option value="orange">Orange</ion-select-option> -->
-                </ion-select>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-datetime-button id="datetimeactivity" datetime="datetime"></ion-datetime-button>
+
+                    <ion-modal>
+                        <ion-datetime id="datetime"></ion-datetime>
+                    </ion-modal>
+                </ion-item>
+                <ion-item>
+                    <ion-input id="minutes" label="Number of minutes" type="number" placeholder="000"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-button onclick="sendactivity()">Send</ion-button>
                 </ion-item>
             </ion-content>
         </page-add-exercise>
@@ -289,7 +306,16 @@
                 <ion-refresher class="refresher" slot="fixed">
                     <ion-refresher-content></ion-refresher-content>
                 </ion-refresher>
-                List screen </ion-content>
+                <ion-content color="light">
+                    <ion-list inset="true" id="listactivities">
+                      <!-- <ion-item>
+                        <ion-label>Pokémon Yellow</ion-label>
+                      </ion-item>
+                       -->
+                    
+                    </ion-list>
+                  </ion-content>
+             </ion-content>
         </page-list>
 
         <page-filter class="ion-page" id="screen-filter">

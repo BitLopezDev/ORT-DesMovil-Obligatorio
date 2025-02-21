@@ -109,3 +109,5 @@ const SQLI = Array(
   "information_schema"
 );
 let countriesarray = Array();
+let activitiesarray = Array();
+let listarray = Array();
