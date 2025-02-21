@@ -278,7 +278,7 @@ async function sendActivity(activity, datetimeactivity, minutes) {
     document.querySelector(
       "#add-exerciseresult"
     ).innerHTML = `Actividad cargada exitosamente`;
-    loadList();
+    // loadList();
   } else {
     document.querySelector(
       "#add-exerciseresult"
