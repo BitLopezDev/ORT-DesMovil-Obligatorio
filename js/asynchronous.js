@@ -166,12 +166,6 @@ async function loadActivities() {
       "activity"
     ).innerHTML += `<ion-select-option value="${act.id}">${act.nombre}</ion-select-option>`;
   }
-
-  // data.actividades.forEach((act) => {
-  //   document.getElementById(
-  //     "actividades"
-  //   ).innerHTML += `<ion-select-option value="${act.id}">${act.nombre}</ion-select-option>`;
-  // });
 }
 async function loadList() {
   if (!iftoken()) {
@@ -214,6 +208,7 @@ async function loadList() {
 
   <ion-card-content>
    Usted ha hecho ${aux[1]} el día : ${data.registros[i].fecha} por ${data.registros[i].tiempo} minutos
+   <h1><ion-icon name="trash-outline" onclick="deleteregistered(${data.registros[i].id})"></ion-icon></h1>
   </ion-card-content>
 </ion-card>
 
@@ -221,9 +216,10 @@ async function loadList() {
     
 </ion-item>
     `;
-    /*<ion-label><img src="${aux[2]}" max-height="100px" max-width="100px" /> <h2>${aux[1]}</h2></ion-label>*/
   }
   //document.getElementById("prelist").innerHTML = data;
+  document.getElementById("listactivities").innerHTML +=
+    "<br /><br /><br /><br /><br /><br />";
 }
 
 /**
@@ -248,4 +244,83 @@ function activityById(id) {
   }
 
   return [0, "Error 1", "Error 1"];
+}
+
+async function sendActivity(activity, datetimeactivity, minutes) {
+  if (!iftoken()) {
+    navigate(null, "/login");
+    return;
+  }
+  let thereistoken = localStorage.getItem("token");
+  let thereisid = localStorage.getItem("iduser");
+  let headersList = {
+    apikey: thereistoken,
+    iduser: thereisid,
+    "Content-Type": "application/json",
+  };
+
+  let bodyContent = JSON.stringify({
+    idActividad: activity,
+    idUsuario: thereisid,
+    tiempo: minutes,
+    fecha: datetimeactivity,
+  });
+
+  let response = await fetch("https://movetrack.develotion.com/registros.php", {
+    method: "POST",
+    body: bodyContent,
+    headers: headersList,
+  });
+
+  let data = await response.json();
+  console.log(data);
+  if (data.codigo == "200" || data.codigo == 200) {
+    document.querySelector(
+      "#add-exerciseresult"
+    ).innerHTML = `Actividad cargada exitosamente`;
+    loadList();
+  } else {
+    document.querySelector(
+      "#add-exerciseresult"
+    ).innerHTML = `Error cargando actividad: ${data.codigo}, ${data.mensaje}`;
+  }
+}
+
+async function deleteregistered(id) {
+  if (!iftoken()) {
+    navigate(null, "/login");
+    return;
+  }
+  let thereistoken = localStorage.getItem("token");
+  let thereisid = localStorage.getItem("iduser");
+  let headersList = {
+    apikey: thereistoken,
+    iduser: thereisid,
+    "Content-Type": "application/json",
+  };
+
+  let bodyContent = JSON.stringify({
+    idActividad: id,
+  });
+
+  let response = await fetch(
+    `https://movetrack.develotion.com/registros.php?idRegistro=${id}`,
+    {
+      method: "DELETE",
+      headers: headersList,
+    }
+  );
+
+  let data = await response.json();
+
+  if (data.codigo == "200" || data.codigo == 200) {
+    document.querySelector(
+      "#listactivitiesresult"
+    ).innerHTML = `Actividad eliminada exitosamente`;
+    location.reload(true);
+  } else {
+    document.querySelector(
+      "#listactivitiesresult"
+    ).innerHTML = `Error eliminando actividad: ${data.codigo}, ${data.mensaje}`;
+  }
 }

@@ -44,12 +44,33 @@ function stringSecurity(strArray) {
   return true;
 }
 
-function sendactivity() {
+function sendactivitycheck() {
+  document.querySelector("#add-exerciseresult").innerHTML = `Procesando...`;
   console.log("sending activity");
   let activity = document.querySelector("#activity").value;
   let datetimeactivity = document.querySelector("#datetime").value;
   let minutes = document.querySelector("#minutes").value;
   console.log(activity + datetimeactivity + minutes);
+  if (
+    activity == "" ||
+    datetimeactivity == "" ||
+    minutes == "" ||
+    activity == null ||
+    datetimeactivity == null ||
+    minutes == null ||
+    minutes < 1
+  ) {
+    document.querySelector(
+      "#add-exerciseresult"
+    ).innerHTML = `Complete los datos. Recuerde que el tiempo debe ser mayor o igual a 1 minuto, y la fecha no puede ser superior al dia de hoy`;
+    return;
+  }
+  if (stringSecurity([activity, datetimeactivity, minutes])) {
+    sendActivity(activity, datetimeactivity, minutes);
+  } else {
+    document.querySelector(
+      "#add-exerciseresult"
+    ).innerHTML ="SQL Injection detected";
+    
+  }
 }
-
-

@@ -288,7 +288,10 @@
                     <ion-input id="minutes" label="Number of minutes" type="number" placeholder="000"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-button onclick="sendactivity()">Send</ion-button>
+                    <ion-button onclick="sendactivitycheck()">Send</ion-button>
+                </ion-item>
+                <ion-item>
+                    <ion-label id="label-respuesta-add-exercise"><strong id="add-exerciseresult"></strong></ion-label>
                 </ion-item>
             </ion-content>
         </page-add-exercise>
@@ -307,15 +310,18 @@
                     <ion-refresher-content></ion-refresher-content>
                 </ion-refresher>
                 <ion-content color="light">
+                    <ion-item>
+                        <ion-label id="listactivitiesresult"></ion-label>
+                      </ion-item>
                     <ion-list inset="true" id="listactivities">
-                      <!-- <ion-item>
+                        <!-- <ion-item>
                         <ion-label>Pokémon Yellow</ion-label>
                       </ion-item>
                        -->
-                    
+
                     </ion-list>
-                  </ion-content>
-             </ion-content>
+                </ion-content>
+            </ion-content>
         </page-list>
 
         <page-filter class="ion-page" id="screen-filter">
