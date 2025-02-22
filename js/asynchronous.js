@@ -114,23 +114,24 @@ async function loginThySelf(user = "327146test1", password = "327146") {
 }
 
 async function loadCountries() {
-  let response = await fetch("https://restcountries.com/v2/all", {
+  let response = await fetch("https://movetrack.develotion.com/paises.php", {
     method: "GET",
   });
 
   let data = await response.json();
-  data.forEach((element) => {
+  for (let country of data.paises) {
     countriesarray.push([
-      element.name,
-      element.alpha3Code,
-      element.callingCodes[0],
+      country.name,
+      country.id,
+      country.latitud,
+      country.longitud,
     ]);
-  });
+  }
   // console.log(countriesarray);
   // console.log(data);
   let aux = `<div slot="label">Your country<ion-text color="danger">(Required)</ion-text></div>`;
-  for (let country of data) {
-    aux += `<ion-select-option value="${country.callingCodes}">${country.name} ${country.alpha3Code} ${country.callingCodes}</ion-select-option>>`;
+  for (let country of data.paises) {
+    aux += `<ion-select-option value="${country.id}">${country.name} - ${country.id}</ion-select-option>>`;
   }
   document.querySelector("#country-register").innerHTML += aux;
 }
@@ -324,3 +325,67 @@ async function deleteregistered(id) {
     ).innerHTML = `Error eliminando actividad: ${data.codigo}, ${data.mensaje}`;
   }
 }
+
+async function usersByCountry() {
+  if (!iftoken()) {
+    navigate(null, "/login");
+    return;
+  }
+  let thereistoken = localStorage.getItem("token");
+  let thereisid = localStorage.getItem("iduser");
+  let headersList = {
+    apikey: thereistoken,
+    iduser: thereisid,
+  };
+
+  let responseUsers = await fetch(
+    "https://movetrack.develotion.com/usuariosPorPais.php",
+    {
+      method: "GET",
+      headers: headersList,
+    }
+  );
+
+  let dataUsers = await responseUsers.json();
+  return dataUsers ?? null;
+}
+
+async function loadMapPoints1() {
+  let response = await fetch("https://movetrack.develotion.com/paises.php", {
+    method: "GET",
+  });
+
+  let data = await response.json();
+  let userslist = await usersByCountry();
+
+  //console.log(userslist);
+  if (userslist == null) {
+    return;
+  }
+  let aux;
+
+  for (let c of data.paises) {
+    let u = userslist.paises.find((element) => element.id == c.id);
+
+    if (u != undefined) {
+      console.log(`${c.name} - ${u.cantidadDeUsuarios} usuarios registrados`);
+      usersCountryArray.push([
+        c.name,
+        u.cantidadDeUsuarios,
+        c.latitud,
+        c.longitud,
+      ]);
+    }
+
+    usersCountryArray.forEach((element) => {
+      let marker = L.marker([element[2], element[3]])
+        .addTo(map)
+        .bindPopup(`${element[0]} - ${element[1]} usuarios registrados`);
+    });
+  }
+}
+/*L.marker([c.latitud, c.longitud])
+          .addTo(map)
+          .bindPopup(
+            `${c.name} - ${u.cantidadDeUsuarios} usuarios registrados`
+          );*/

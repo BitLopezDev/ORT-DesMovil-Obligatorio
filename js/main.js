@@ -8,6 +8,7 @@ window.onload = function Start() {
   loadCountries();
   updateDOMinfo();
   LoadMap();
+  loadMapPoints1();
 
   //loginThySelf();
 };

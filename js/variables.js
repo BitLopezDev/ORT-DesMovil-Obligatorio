@@ -111,3 +111,4 @@ const SQLI = Array(
 let countriesarray = Array();
 let activitiesarray = Array();
 let listarray = Array();
+let usersCountryArray = new Array();
