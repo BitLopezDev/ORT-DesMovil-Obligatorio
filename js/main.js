@@ -50,7 +50,9 @@ function sendactivitycheck() {
   let activity = document.querySelector("#activity").value;
   let datetimeactivity = document.querySelector("#datetime").value;
   let minutes = document.querySelector("#minutes").value;
-  console.log(activity + datetimeactivity + minutes);
+  //alert(datetimeactivity);
+  //2025-02-05T12:49:00
+  //alert(datetimeactivity.substring(0, 10));
   if (
     activity == "" ||
     datetimeactivity == "" ||
@@ -58,7 +60,8 @@ function sendactivitycheck() {
     activity == null ||
     datetimeactivity == null ||
     minutes == null ||
-    minutes < 1
+    minutes < 1 ||
+    !dateworking(datetimeactivity)
   ) {
     document.querySelector(
       "#add-exerciseresult"
@@ -68,9 +71,25 @@ function sendactivitycheck() {
   if (stringSecurity([activity, datetimeactivity, minutes])) {
     sendActivity(activity, datetimeactivity, minutes);
   } else {
-    document.querySelector(
-      "#add-exerciseresult"
-    ).innerHTML ="SQL Injection detected";
-    
+    document.querySelector("#add-exerciseresult").innerHTML =
+      "SQL Injection detected";
   }
+}
+
+/**
+ *
+ * @param {string} dateparam
+ * @returns {boolean}
+ */
+function dateworking(dateparam) {
+  let now = new Date();
+  //2025-02-05T12:49:00
+  /*let dateYear = date.substring(0, 4);
+  let dateMonth = date.substring(5, 7);
+  let dateDay = date.substring(8, 10);*/
+  let date2 = new Date(dateparam);
+  if (date2 > now) {
+    return false;
+  }
+  return true;
 }
