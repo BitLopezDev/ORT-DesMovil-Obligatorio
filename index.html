@@ -9,6 +9,12 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -312,7 +318,7 @@
                 <ion-content color="light">
                     <ion-item>
                         <ion-label id="listactivitiesresult"></ion-label>
-                      </ion-item>
+                    </ion-item>
                     <ion-list inset="true" id="listactivities">
                         <!-- <ion-item>
                         <ion-label>Pokémon Yellow</ion-label>
@@ -385,12 +391,11 @@
                 <ion-refresher class="refresher" slot="fixed">
                     <ion-refresher-content></ion-refresher-content>
                 </ion-refresher>
-
-
-                Map screen </ion-content>
+                <div id="map"></div>
+             </ion-content>
         </page-map>
 
-        <!--! /!\ /!\ DO NOT ADD PAGES BELLOW /!\ /!\ !-->
+        <!-- ! /!\ /!\ DO NOT ADD PAGES BELLOW /!\ /!\ !-->
         <page-home class="ion-page" id="screen-home">
             <ion-header>
                 <ion-toolbar>
@@ -493,6 +498,7 @@
     <!-- <script src="js/error.js"></script>-->
     <script src="js/asynchronous.js"></script>
     <script src="js/routing.js"></script>
+    <script src="js/map.js"></script>
     <script src="js/main.js" defer></script>
 </body>
 
