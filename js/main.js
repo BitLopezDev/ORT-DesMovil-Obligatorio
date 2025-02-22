@@ -93,3 +93,14 @@ function dateworking(dateparam) {
   }
   return true;
 }
+
+function sameDay(d1){
+  let now = new Date();
+  let today = now.getDay();
+  if (d1.getDay() == today){
+    return true;
+  }
+  return false;
+}
+
+
