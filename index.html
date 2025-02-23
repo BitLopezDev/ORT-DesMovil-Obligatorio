@@ -284,11 +284,11 @@
                     </ion-select>
                 </ion-item>
                 <ion-item>
-                    <ion-datetime-button id="datetimeactivity" datetime="datetime"></ion-datetime-button>
+                    <ion-datetime id="datetime" display-format="DD/MM/YYYY" picker-format="DD/MM/YYYY"
+                        presentation="date" (ionChange)="onDateChange($event)">
+                    </ion-datetime>
 
-                    <ion-modal>
-                        <ion-datetime id="datetime"></ion-datetime>
-                    </ion-modal>
+
                 </ion-item>
                 <ion-item>
                     <ion-input id="minutes" label="Number of minutes" type="number" placeholder="000"></ion-input>
@@ -343,7 +343,28 @@
                 <ion-refresher class="refresher" slot="fixed">
                     <ion-refresher-content></ion-refresher-content>
                 </ion-refresher>
-                Filter screen </ion-content>
+                <h2>Actividades de hoy</h2>
+                <ion-list inset="true" id="filtertoday">
+            
+
+                </ion-list>
+                <h2>Actividades de la semana</h2>
+                <ion-list inset="true" id="filterweek">
+            
+
+                </ion-list>
+                <h2>Actividades del mes</h2>
+                <ion-list inset="true" id="filtermonth">
+            
+
+                </ion-list>
+                <h2>Actividades del resto de histórico</h2>
+                <ion-list inset="true" id="filterall">
+            
+
+                </ion-list>
+
+            </ion-content>
         </page-filter>
 
         <page-time class="ion-page" id="screen-time">

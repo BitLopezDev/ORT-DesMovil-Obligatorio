@@ -194,10 +194,15 @@ async function loadList() {
 
   let data = await response.json();
   listarray = [...data.registros];
-
+  document.getElementById("listactivities").innerHTML = "";
+  document.getElementById("filtertoday").innerHTML = "";
+  document.getElementById("filterweek").innerHTML = "";
+  document.getElementById("filtermonth").innerHTML = "";
+  document.getElementById("filterall").innerHTML = "";
   console.log(data);
   for (let i in data.registros) {
     let aux = activityById(data.registros[i].idActividad);
+
     document.getElementById("listactivities").innerHTML += `
     <ion-item>
 
@@ -218,6 +223,41 @@ async function loadList() {
     
 </ion-item>
     `;
+
+    let auxFilter = "";
+    if (DateCalculon(data.registros[i].fecha) === 0) {
+      auxFilter = "filtertoday";
+    }
+    if (DateCalculon(data.registros[i].fecha) === 1) {
+      auxFilter = "filterweek";
+    }
+    if (DateCalculon(data.registros[i].fecha) === 2) {
+      auxFilter = "filtermonth";
+    }
+    if (DateCalculon(data.registros[i].fecha) === 3) {
+      auxFilter = "filterall";
+    }
+
+    document.getElementById(auxFilter).innerHTML += `
+  <ion-item>
+
+    <ion-card>
+  <img alt="Activity" src="${aux[2]}" />
+  <ion-card-header>
+    <ion-card-title>${aux[1]}</ion-card-title>
+    <ion-card-subtitle>Ejercicio hecho</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+   Usted ha hecho ${aux[1]} el día : ${data.registros[i].fecha} por ${data.registros[i].tiempo} minutos
+   <h1><ion-icon name="trash-outline" onclick="deleteregistered(${data.registros[i].id})"></ion-icon></h1>
+  </ion-card-content>
+</ion-card>
+
+
+    
+</ion-item>
+  `;
   }
   //document.getElementById("prelist").innerHTML = data;
   document.getElementById("listactivities").innerHTML +=

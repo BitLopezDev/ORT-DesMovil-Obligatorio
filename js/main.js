@@ -90,11 +90,44 @@ function sameDay(d1) {
   return false;
 }
 
+function dateWeek(dateparam) {
+  let now = new Date();
+  //2025-02-05T12:49:00
+  /*let dateYear = date.substring(0, 4);
+  let dateMonth = date.substring(5, 7);
+  let dateDay = date.substring(8, 10);*/
+  let date2 = new Date(dateparam);
+  if (date2 > now) {
+    return false;
+  }
+  return true;
+}
+
 function showPoint(name, amount, lat, long) {
   // console.log(`${name} ${amount} ${lat} ${long}`);
   let point = L.marker([lat, long])
     .addTo(map)
     .bindPopup(`${name} - ${amount} usuarios registrados`);
+}
+
+
+function DateCalculon(date) {
+  const today = new Date();
+  
+  const paramdate = new Date(date);
+
+  const timediff = today - paramdate;
+  const daydiff = timediff / (1000 * 3600 * 24);
+
+  if (daydiff <= 1) {
+      return 0;
+  } else if (daydiff <= 7) {
+      return 1;
+  } else if (today.toISOString().substring(5, 7) == paramdate.toISOString().substring(5, 7)  ) {
+      return 2;
+  } else {
+      return 3;
+  }
 }
 
 // ! /!\ DO NOT CODE BELLOW THIS LINE
