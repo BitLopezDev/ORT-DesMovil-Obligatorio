@@ -1,21 +1,6 @@
 /**
  * @returns {void}
  */
-window.onload = function Start() {
-  events();
-  iftoken();
-  refresherall();
-  loadCountries();
-  updateDOMinfo();
-  LoadMap();
-  loadMapPoints1();
-
-  //loginThySelf();
-};
-
-/**
- * @returns {void}
- */
 function loginSubmit() {
   let user = document.querySelector("#user-login").value;
   let password = document.querySelector("#password-login").value;
@@ -104,3 +89,30 @@ function sameDay(d1) {
   }
   return false;
 }
+
+function showPoint(name, amount, lat, long) {
+  // console.log(`${name} ${amount} ${lat} ${long}`);
+  let point = L.marker([lat, long])
+    .addTo(map)
+    .bindPopup(`${name} - ${amount} usuarios registrados`);
+}
+
+// ! /!\ DO NOT CODE BELLOW THIS LINE
+
+/**
+ * @returns {void}
+ */
+window.onload = function Start() {
+  events();
+  iftoken();
+  if (iftoken()) {
+    LoadMap();
+    usersByCountry();
+    //loadMapPoints1(); called by previous function
+  }
+  refresherall();
+  loadCountries();
+  updateDOMinfo();
+
+  //loginThySelf();
+};

@@ -13,11 +13,9 @@ function LoadMap() {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  /*var marker = L.marker([-33, -56])
-    .addTo(map)
-    .bindPopup("<b>Estadio Centenario</b><br>Capacidad: 50000");
   
-  */  /*var circle = L.circle([-34.894515, -56.15282], {
+  
+    /*var circle = L.circle([-34.894515, -56.15282], {
     color: "red",
     fillColor: "#f03",
     fillOpacity: 0.3,

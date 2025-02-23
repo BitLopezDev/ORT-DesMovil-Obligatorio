@@ -82,17 +82,5 @@ function refresherall() {
 function updateDOMinfo() {
   document.querySelector("#nameMenu").innerHTML =
     localStorage.getItem("name") || "Error finding name";
-  /*let countrycode = localStorage.getItem("countrycode");
-  console.log(countrycode);
-  for (const element of countriesarray) {
-    if (String(element[2]) == countrycode) {
-      document.querySelector("#countryname").innerHTML = element[0];
-      console.log(element[0]);
-      document.querySelector("#countrycode").innerHTML = element[1];
-    }
-}*/
-  /*
-  document.querySelector("#countrycode").innerHTML = countrycode;
-  document.querySelector("#countryname").innerHTML = countrycode;
-*/
+ 
 }

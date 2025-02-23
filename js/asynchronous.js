@@ -102,6 +102,7 @@ async function loginThySelf(user = "327146test1", password = "327146") {
     localStorage.setItem("iduser", data.id);
     loadActivities();
     loadList();
+    usersByCountry();
 
     document.querySelector("#loginresult").innerHTML = `Login succesfull`;
     return true;
@@ -123,8 +124,8 @@ async function loadCountries() {
     countriesarray.push([
       country.name,
       country.id,
-      country.latitud,
-      country.longitud,
+      country.latitude,
+      country.longitude,
     ]);
   }
   // console.log(countriesarray);
@@ -331,6 +332,7 @@ async function usersByCountry() {
     navigate(null, "/login");
     return;
   }
+
   let thereistoken = localStorage.getItem("token");
   let thereisid = localStorage.getItem("iduser");
   let headersList = {
@@ -347,45 +349,49 @@ async function usersByCountry() {
   );
 
   let dataUsers = await responseUsers.json();
-  return dataUsers ?? null;
+  dataUsers.paises.forEach((element) => {
+    usersCountCountryArray.push({
+      id: element.id,
+      name: element.name,
+      cantidadDeUsuarios: element.cantidadDeUsuarios,
+    });
+  });
+  loadMapPoints1();
 }
 
+/**
+ *
+ * @returns {void}
+ */
 async function loadMapPoints1() {
   let response = await fetch("https://movetrack.develotion.com/paises.php", {
     method: "GET",
   });
 
   let data = await response.json();
-  let userslist = await usersByCountry();
-
-  //console.log(userslist);
-  if (userslist == null) {
-    return;
+  if (usersCountCountryArray.length < 1) {
+    return false;
   }
-  let aux;
 
-  for (let c of data.paises) {
-    let u = userslist.paises.find((element) => element.id == c.id);
+  usersCountCountryArray.forEach((element) => {
+    countriesarray.forEach((country) => {
+      /**
+       * * Element al countries with # of people
+       * * country = list of (10)countries free
+       */
 
-    if (u != undefined) {
-      console.log(`${c.name} - ${u.cantidadDeUsuarios} usuarios registrados`);
-      usersCountryArray.push([
-        c.name,
-        u.cantidadDeUsuarios,
-        c.latitud,
-        c.longitud,
-      ]);
-    }
+      if (country[1] == element.id) {
+        // console.log(
+        //   `En ${country[0]} hay ${element.cantidadDeUsuarios} usuarios registrados`
+        // );
 
-    usersCountryArray.forEach((element) => {
-      let marker = L.marker([element[2], element[3]])
-        .addTo(map)
-        .bindPopup(`${element[0]} - ${element[1]} usuarios registrados`);
+        showPoint(
+          country[0],
+          element.cantidadDeUsuarios,
+          country[2],
+          country[3]
+        );
+      }
     });
-  }
+  });
 }
-/*L.marker([c.latitud, c.longitud])
-          .addTo(map)
-          .bindPopup(
-            `${c.name} - ${u.cantidadDeUsuarios} usuarios registrados`
-          );*/

@@ -112,3 +112,15 @@ let countriesarray = Array();
 let activitiesarray = Array();
 let listarray = Array();
 let usersCountryArray = new Array();
+let usersCountCountryArray = new Array();
+
+var Argentina;
+var Bolivia;
+var Brazil;
+var Chile;
+var Colombia;
+var Ecuador;
+var Paraguay;
+var Peru;
+var Uruguay;
+var Venezuela;
