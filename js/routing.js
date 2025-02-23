@@ -47,6 +47,7 @@ function navigate(evt, altroute = null) {
     loadList();
     LIST.style.display = "block";
   } else if (route == "/filter") {
+    loadList();
     FILTER.style.display = "block";
   } else if (route == "/time") {
     TIME.style.display = "block";
