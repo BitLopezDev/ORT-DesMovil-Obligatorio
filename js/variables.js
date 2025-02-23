@@ -109,9 +109,80 @@ const SQLI = Array(
   "information_schema"
 );
 let countriesarray = Array();
+//////////////////////////////////
+/**
+ * * Array of activities
+ *  [
+        {
+            "id": 1,
+            "nombre": "Caminata",
+            "imagen": 5
+        },
+        {
+            "id": 2,
+            "nombre": "Pesas",
+            "imagen": 6
+        },
+        {
+            "id": 4,
+            "nombre": "Fútbol",
+            "imagen": 2
+        },
+        {
+            "id": 5,
+            "nombre": "Natación",
+            "imagen": 1
+        },
+        {
+            "id": 6,
+            "nombre": "HIIT",
+            "imagen": 6
+        },
+        {
+            "id": 7,
+            "nombre": "Correr",
+            "imagen": 5
+        },
+        {
+            "id": 8,
+            "nombre": "Bicicleta",
+            "imagen": 4
+        },
+        {
+            "id": 9,
+            "nombre": "Basketball",
+            "imagen": 3
+        }
+    ]
+ */
+
 let activitiesarray = Array();
+//////////////////////////////////
+/**
+ * * Array of activities
+ * from https://movetrack.develotion.com/registros.php?idUsuario=1632
+ * [
+        {
+            "id": 77196,
+            "idActividad": 6,
+            "idUsuario": 1632,
+            "tiempo": 110,
+            "fecha": "2024-09-21"
+        },
+        {
+            "id": 77200,
+            "idActividad": 6,
+            "idUsuario": 1632,
+            "tiempo": 110,
+            "fecha": "2024-09-21"
+        }
+    ]
+
+ */
 let listarray = Array();
+//////////////////////////////////
 let usersCountryArray = new Array();
+
 let usersCountCountryArray = new Array();
 
 var Argentina;

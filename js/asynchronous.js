@@ -262,6 +262,7 @@ async function loadList() {
   //document.getElementById("prelist").innerHTML = data;
   document.getElementById("listactivities").innerHTML +=
     "<br /><br /><br /><br /><br /><br />";
+  loadTimes();
 }
 
 /**

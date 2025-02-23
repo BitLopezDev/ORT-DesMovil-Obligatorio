@@ -50,6 +50,9 @@ function navigate(evt, altroute = null) {
     loadList();
     FILTER.style.display = "block";
   } else if (route == "/time") {
+    loadList();
+
+    
     TIME.style.display = "block";
   } else if (route == "/map") {
     MAP.style.display = "block";

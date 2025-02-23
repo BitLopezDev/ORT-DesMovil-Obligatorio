@@ -4,6 +4,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://www.w3schools.com/Jsref/jsref_substring.asp
 
+https://www.freecodecamp.org/news/javascript-get-current-date-todays-date-in-js/
 
 PREGUNTO A IA: 'como calcular diferencia de fechas'
 

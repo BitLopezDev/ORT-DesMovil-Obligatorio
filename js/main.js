@@ -109,25 +109,57 @@ function showPoint(name, amount, lat, long) {
     .addTo(map)
     .bindPopup(`${name} - ${amount} usuarios registrados`);
 }
-
-
+/**
+ *
+ * @param {StringDate} date
+ * @returns {int}
+ * * 0: TODAY
+ * * 1: THIS WEEK
+ * * 2: THIS MONTH
+ * * 3: OLDER
+ */
 function DateCalculon(date) {
   const today = new Date();
-  
+
   const paramdate = new Date(date);
 
   const timediff = today - paramdate;
   const daydiff = timediff / (1000 * 3600 * 24);
 
   if (daydiff <= 1) {
-      return 0;
+    return 0;
   } else if (daydiff <= 7) {
-      return 1;
-  } else if (today.toISOString().substring(5, 7) == paramdate.toISOString().substring(5, 7)  ) {
-      return 2;
+    return 1;
+  } else if (
+    today.toISOString().substring(5, 7) ==
+    paramdate.toISOString().substring(5, 7)
+  ) {
+    return 2;
   } else {
-      return 3;
+    return 3;
   }
+}
+
+function loadTimes() {
+  if (!iftoken()) {
+    navigate(null, "/login");
+    return;
+  }
+  let aux = 0;
+  let auxDay = 0;
+  listarray.forEach((element) => {
+    aux += element.tiempo;
+    if (DateCalculon(element.fecha) == 0) {
+      console.log(auxDay);
+      auxDay += element.tiempo;
+    }
+  });
+  document.querySelector(
+    "#totaltime"
+  ).innerHTML = `Total de tiempo: ${aux} minutos`;
+  document.querySelector(
+    "#dailytime"
+  ).innerHTML = `Total de tiempo del dia: ${auxDay} minutos`;
 }
 
 // ! /!\ DO NOT CODE BELLOW THIS LINE
@@ -141,6 +173,8 @@ window.onload = function Start() {
   if (iftoken()) {
     LoadMap();
     usersByCountry();
+    loadList();
+
     //loadMapPoints1(); called by previous function
   }
   refresherall();
