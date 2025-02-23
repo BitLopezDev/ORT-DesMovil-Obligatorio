@@ -1,9 +1,10 @@
 /**
- *
+ * * Registers user then login
+ * * SQL Security
  * @param {string} user
  * @param {string} password
  * @param {int} idCountry
- * @returns {string}
+ * @returns {void}
  */
 async function registerThySelf(user, password, idCountry) {
   if (!stringSecurity([user, password, String(idCountry)])) {
@@ -52,12 +53,15 @@ async function registerThySelf(user, password, idCountry) {
 }
 
 /**
- *
+ * * Logs user
+ * * Loads/updates content [updateDOMinfo(),  loadActivities(); loadList(); usersByCountry(); ]
+ * * Updates DOM @ #loginresult
+ * * SQL Security
  * @param {string} user
  * @param {string} password
  * @returns {boolean}
  */
-async function loginThySelf(user = "327146test1", password = "327146") {
+async function loginThySelf(user, password) {
   updateDOMinfo();
 
   if (!stringSecurity([user, password])) {
@@ -113,7 +117,11 @@ async function loginThySelf(user = "327146test1", password = "327146") {
   }
   return false;
 }
-
+/**
+ * * Loads countries, pushes them to countriesarray[]
+ * * Updates DOM (#country-register), select tag with countries
+ * @returns {void}
+ */
 async function loadCountries() {
   let response = await fetch("https://movetrack.develotion.com/paises.php", {
     method: "GET",
@@ -138,7 +146,9 @@ async function loadCountries() {
 }
 
 /**
- *
+ * * Login check
+ * * clones activities to activitiesarray[] by spread
+ * * Updates DOM @ #activity, select tag with activities
  * @returns {void}
  */
 async function loadActivities() {
@@ -169,6 +179,13 @@ async function loadActivities() {
     ).innerHTML += `<ion-select-option value="${act.id}">${act.nombre}</ion-select-option>`;
   }
 }
+/**
+ * * Login check
+ * * awaits loadActivities();
+ * * clones fetch data to listarray[] by spread
+ * * Updates DOM @ (#listactivities, #filtertoday, #filterweek, #filtermonth, #filterall)
+ * @returns {void}
+ */
 async function loadList() {
   if (!iftoken()) {
     navigate(null, "/login");
@@ -266,10 +283,10 @@ async function loadList() {
 }
 
 /**
- *
- * @param {*} id
- * @returns {Array}
  * * ID, Name, Image *
+ * @param {*} id
+ * @returns {object[]}
+ * 
  */
 function activityById(id) {
   if (activitiesarray.length == 0) {
@@ -288,7 +305,15 @@ function activityById(id) {
 
   return [0, "Error 1", "Error 1"];
 }
-
+/**
+ * * login check
+ * * Updates DOM @ #add-exerciseresult
+ * * adds exercise to API
+ * @param {string} activity 
+ * @param {string} datetimeactivity 
+ * @param {int} minutes 
+ * @returns {void}
+ */
 async function sendActivity(activity, datetimeactivity, minutes) {
   if (!iftoken()) {
     navigate(null, "/login");
@@ -329,6 +354,13 @@ async function sendActivity(activity, datetimeactivity, minutes) {
   }
 }
 
+/**
+ * * Login check
+ * * Deletes exercise from API
+ * * Updates DOM @ #listactivitiesresult
+ * @param {int} id 
+ * @returns {void}
+ */
 async function deleteregistered(id) {
   if (!iftoken()) {
     navigate(null, "/login");
@@ -368,6 +400,12 @@ async function deleteregistered(id) {
   }
 }
 
+/**
+ * * Login check
+ * * pushes users by country to usersCountCountryArray[id: int, name : string, cantidadDeUsuarios: int]  
+ * * calls loadMapPoints1();
+ * @returns {void} 
+ */
 async function usersByCountry() {
   if (!iftoken()) {
     navigate(null, "/login");
@@ -401,7 +439,7 @@ async function usersByCountry() {
 }
 
 /**
- *
+ * * Loads points in map
  * @returns {void}
  */
 async function loadMapPoints1() {
@@ -422,9 +460,7 @@ async function loadMapPoints1() {
        */
 
       if (country[1] == element.id) {
-        // console.log(
-        //   `En ${country[0]} hay ${element.cantidadDeUsuarios} usuarios registrados`
-        // );
+       
 
         showPoint(
           country[0],

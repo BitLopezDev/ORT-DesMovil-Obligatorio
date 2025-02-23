@@ -35,6 +35,7 @@ function showthemall(selector, display = "block") {
 function isloggedint() {}
 /**
  * * Shows or hides DOM elements based on there being a token
+ * * CALLS: hidethemall, showthemall
  * @returns {boolean}
  */
 function iftoken() {
@@ -60,7 +61,7 @@ function iftoken() {
 }
 
 /**
- * * refreshers
+ * * refreshers from https://ionicframework.com/docs/api/refresher
  * @returns {void}
  */
 
@@ -79,6 +80,10 @@ function refresherall() {
   }
 }
 
+/**
+ * * Updates DOM info of name @ #nameMenu
+ * @returns {void}
+ */
 function updateDOMinfo() {
   document.querySelector("#nameMenu").innerHTML =
     localStorage.getItem("name") || "Error finding name";

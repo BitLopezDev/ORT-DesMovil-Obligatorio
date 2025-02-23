@@ -1,13 +1,17 @@
 /**
+ * * Sends values to loginThySelf
  * @returns {void}
  */
 function loginSubmit() {
   let user = document.querySelector("#user-login").value;
   let password = document.querySelector("#password-login").value;
   let result = loginThySelf(user, password);
-  console.log(result);
 }
 
+/**
+ * * Sends values to registerThySelf
+ * @returns {void}
+ */
 function registerSubmit() {
   let user = document.querySelector("#user-register").value;
   let password = document.querySelector("#password-register").value;
@@ -17,7 +21,8 @@ function registerSubmit() {
 }
 
 /**
- * returns opposite of boolean. if it returns True, it is safe to proceed
+ * * Returns bool on safety
+ * * if (bool) => safe to proceed
  * @param {String[]} strArray
  * @returns {bool}
  */
@@ -31,6 +36,13 @@ function stringSecurity(strArray) {
   return true;
 }
 
+/**
+ * * Checks info to send to sendActivity()
+ * * Updates DOM @ #add-exerciseresult
+ * * SQL Security
+ * * calls dateworking()
+ * @returns {void}
+ */
 function sendactivitycheck() {
   document.querySelector("#add-exerciseresult").innerHTML = `Procesando...`;
   console.log("sending activity");
@@ -64,7 +76,7 @@ function sendactivitycheck() {
 }
 
 /**
- *
+ * * if (bool) => dateparam <= now
  * @param {string} dateparam
  * @returns {boolean}
  */
@@ -81,6 +93,11 @@ function dateworking(dateparam) {
   return true;
 }
 
+/**
+ * *Checks if the date is today
+ * @param {string} d1
+ * @returns {bool}
+ */
 function sameDay(d1) {
   let now = new Date();
   let today = now.getDay();
@@ -90,19 +107,14 @@ function sameDay(d1) {
   return false;
 }
 
-function dateWeek(dateparam) {
-  let now = new Date();
-  //2025-02-05T12:49:00
-  /*let dateYear = date.substring(0, 4);
-  let dateMonth = date.substring(5, 7);
-  let dateDay = date.substring(8, 10);*/
-  let date2 = new Date(dateparam);
-  if (date2 > now) {
-    return false;
-  }
-  return true;
-}
-
+/**
+ * * Prints points on map
+ * @param {string} name 
+ * @param {int} amount 
+ * @param {float} lat 
+ * @param {float} long 
+ * @returns {void}
+ */
 function showPoint(name, amount, lat, long) {
   // console.log(`${name} ${amount} ${lat} ${long}`);
   let point = L.marker([lat, long])
@@ -110,7 +122,7 @@ function showPoint(name, amount, lat, long) {
     .bindPopup(`${name} - ${amount} usuarios registrados`);
 }
 /**
- *
+ * * works with dates
  * @param {StringDate} date
  * @returns {int}
  * * 0: TODAY
@@ -139,7 +151,12 @@ function DateCalculon(date) {
     return 3;
   }
 }
-
+/**
+ * * Calculates time of activity
+ * * Login check
+ * *Updates DOM @ (#totaltime, #dailytime)
+ * @returns {void}
+ */
 function loadTimes() {
   if (!iftoken()) {
     navigate(null, "/login");
@@ -162,9 +179,10 @@ function loadTimes() {
   ).innerHTML = `Total de tiempo del dia: ${auxDay} minutos`;
 }
 
-// ! /!\ DO NOT CODE BELLOW THIS LINE
+// ! /!\ DO NOT CODE BELLOW THIS LINE /!\ ! 
 
 /**
+ * * RUNS on load
  * @returns {void}
  */
 window.onload = function Start() {

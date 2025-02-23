@@ -108,10 +108,21 @@ const SQLI = Array(
   "sys.",
   "information_schema"
 );
+//////////////////////////////////
+/**
+ * * Array of countries
+ * [country.name,
+      country.id,
+      country.latitude,
+      country.longitude,]
+  * @type {String[] }
+  * @type {int[] }  
+    
+ */
 let countriesarray = Array();
 //////////////////////////////////
 /**
- * * Array of activities
+ * 
  *  [
         {
             "id": 1,
@@ -154,12 +165,16 @@ let countriesarray = Array();
             "imagen": 3
         }
     ]
- */
 
+ */
+/**
+ * * Array of activities
+ * @type {ActividadType[]}
+ */
 let activitiesarray = Array();
 //////////////////////////////////
 /**
- * * Array of activities
+ * 
  * from https://movetrack.develotion.com/registros.php?idUsuario=1632
  * [
         {
@@ -179,10 +194,22 @@ let activitiesarray = Array();
     ]
 
  */
+/**
+ * * Array of activities
+ * @type {Actividad[]}
+ */
 let listarray = Array();
 //////////////////////////////////
-let usersCountryArray = new Array();
-
+// let usersCountryArray = new Array();
+/**
+ * *Array of objects 
+ * {
+ * id: element.id,
+      name: element.name,
+      cantidadDeUsuarios: element.cantidadDeUsuarios,
+ * }
+      @type {Object{id: int, name: string, cantidadDeUsuarios: int}[]}
+ */
 let usersCountCountryArray = new Array();
 
 var Argentina;

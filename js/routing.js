@@ -11,7 +11,7 @@ function events() {
 }
 
 /**
- * Navigating to routes
+ * * Navigating to routes
  * @param {Event} evt
  * @param {string} altroute
  * @returns {void}
